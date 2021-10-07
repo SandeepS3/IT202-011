@@ -7,4 +7,3 @@ CREATE TABLE IF NOT EXISTS `Users` (
     ,PRIMARY KEY (`id`)
     ,UNIQUE (`email`)
 )
-© 2021 GitHub, Inc.
