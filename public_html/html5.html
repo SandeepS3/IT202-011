@@ -1,4 +1,19 @@
-// Arcade Shooter game
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas 
+  style="  width: 600px; height: 400px; border: 1px solid black;" 
+  
+  id="canvas" width="600" height="400" tabindex="1"></canvas>
+</body>
+<script>
+  // Arcade Shooter game
 
 // Get a reference to the canvas DOM element
 var canvas = document.getElementById('canvas');
@@ -139,11 +154,11 @@ function erase() {
 
 // Shoot the bullet (if not already on screen)
 function shoot() {
-  if (!shooting) {
+  // if (!shooting) {
     shooting = true;
     bullet.x = ship.x + ship.l;
     bullet.y = ship.y + ship.l / 2;
-  }
+  // }
 }
 
 // The main draw loop
@@ -226,3 +241,7 @@ function draw() {
 // Start the game
 menu();
 canvas.focus();
+
+</script>
+
+</html>
