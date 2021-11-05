@@ -11,6 +11,7 @@
   style="  width: 600px; height: 400px; border: 1px solid black;" 
   
   id="canvas" width="600" height="400" tabindex="1"></canvas>
+  <button onclick= "startGame()">Start</button>
 </body>
 <script>
   // Arcade Shooter game
@@ -41,6 +42,9 @@ var up = false;
 var down = false;
 var space = false;
 
+var right = false;
+var left = false;
+
 // Is a bullet already on the canvas?
 var shooting = false;
 // The bulled shot from the ship
@@ -55,8 +59,7 @@ function makeEnemy() {
   var enemyX = canvas.width;
   var enemySize = Math.round((Math.random() * 15)) + 15;
   var enemyY = Math.round(Math.random() * (canvas.height - enemySize * 2)) + enemySize;
-  var enemySpeed = Math.round(Math.random() * enemyBaseSpeed) + enemyBaseSpeed;
-  enemies.push(makeSquare(enemyX, enemyY, enemySize, enemySpeed));
+  var enemySpeed = Math.round(Math.random() * enemyBaseSpeed) + enemyBaseSpeed; enemies.push(makeSquare(enemyX, enemyY, enemySize, enemySpeed));
 }
 
 // Check if number a is in the range b to c (exclusive)
@@ -81,6 +84,7 @@ var score = 0;
 var timeBetweenEnemies = 5 * 1000;
 // ID to track the spawn timeout
 var timeoutId = null;
+var animationId = null;
 
 // Show the game menu and instructions
 function menu() {
@@ -92,35 +96,48 @@ function menu() {
   context.font = '24px Arial';
   context.fillText('Click to Start', canvas.width / 2, canvas.height / 2);
   context.font = '18px Arial';
-  context.fillText('Up/Down to move, Space to shoot.', canvas.width / 2, (canvas.height / 4) * 3);
-  // Start the game on a click
-  canvas.addEventListener('click', startGame);
+  context.fillText('Up/Down/Right/Left to move, Space to shoot.', canvas.width / 2, (canvas.height / 4) * 3);
 }
 
 // Start the game
 function startGame() {
+  endGame();
+  canvas.focus();
 	// Kick off the enemy spawn interval
   timeoutId = setInterval(makeEnemy, timeBetweenEnemies);
   // Make the first enemy
   setTimeout(makeEnemy, 1000);
   // Kick off the draw loop
   draw();
-  // Stop listening for click events
-  canvas.removeEventListener('click', startGame);
 }
 
 // Show the end game screen
 function endGame() {
 	// Stop the spawn interval
   clearInterval(timeoutId);
+  cancelAnimationFrame(animationId);
   // Show the final score
   erase();
   context.fillStyle = '#000000';
   context.font = '24px Arial';
   context.textAlign = 'center';
   context.fillText('Game Over. Final Score: ' + score, canvas.width / 2, canvas.height / 2);
-}
 
+
+  //reset for the game
+  score = 0;
+  timeBetweenEnemies = 5 * 1000;
+  timeoutId = null;
+  animationId = null;
+  up = false;
+  down = false;
+  space = false;
+  left = false;
+  right = false;
+  shooting = false;
+  enemies = [];
+  enemyBaseSpeed = 2;
+}
 // Listen for keydown events
 canvas.addEventListener('keydown', function(event) {
   event.preventDefault();
@@ -133,6 +150,14 @@ canvas.addEventListener('keydown', function(event) {
   if (event.keyCode === 32) { // SPACE
     shoot();
   }
+
+  //left and right additions
+  if (event.keyCode === 37) {
+    left = true;
+  }
+  if (event.keyCode === 39) {
+    right = true;
+  }
 });
 
 // Listen for keyup events
@@ -143,6 +168,14 @@ canvas.addEventListener('keyup', function(event) {
   }
   if (event.keyCode === 40) { // DOWN
     down = false;
+  }
+  
+  //left and right additions
+  if (event.keyCode === 37) {
+    left = false;
+  }
+  if (event.keyCode === 39) {
+    right = false;
   }
 });
 
@@ -187,6 +220,14 @@ function draw() {
   if (up) {
     ship.y -= ship.s;
   }
+  
+  //left and right
+  if (right) {
+    ship.x += ship.s;
+  }
+  if (left) {
+    ship.x -= ship.s;
+  }
   // Don't go out of bounds
   if (ship.y < 0) {
     ship.y = 0;
@@ -194,6 +235,14 @@ function draw() {
   if (ship.y > canvas.height - ship.l) {
     ship.y = canvas.height - ship.l;
   }
+
+  if (ship.x < 0) {
+    ship.x = 0;
+  }
+  if (ship.x > canvas.width - ship.l) {
+    ship.x = 0;
+  }
+
   // Draw the ship
   context.fillStyle = '#FF0000';
   ship.draw();
@@ -234,7 +283,7 @@ function draw() {
   if (gameOver) {
     endGame();
   } else {
-    window.requestAnimationFrame(draw);
+     animationId = window.requestAnimationFrame(draw);
   }
 }
 
