@@ -1,9 +1,9 @@
-# Project Name: (Which Project)
+# Project Name: Arcade Game
 ## Project Summary: (Copy from proposal)
-## Github Link: (Prod Branch of Project Folder)
-## Project Board Link: 
-## Website Link: (Heroku Prod of Project folder)
-## Your Name:
+## Github Link: https://github.com/SandeepS3/IT202-011/tree/prod/public_html/Project
+## Project Board Link: https://github.com/SandeepS3/IT202-011/projects
+## Website Link: https://ss84-prod.herokuapp.com/Project/login.php
+## Your Name: Sandeep Singh
 
 <!--
 ### Line item / Feature template (use this for each bullet point)
@@ -23,95 +23,96 @@
 ### Proposal Checklist and Evidence
 
 - Milestone 1
-- - [ ] \(mm/dd/yyyy of completion) User Register
+- [ ] \(10/12/2021) User Register
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: (Completed)
+    - Direct Link: (https://ss84-prod.herokuapp.com/Project/register.php)
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 (https://github.com/SandeepS3/IT202-011/pull/9)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 <img width="1434" alt="Screen Shot 2021-11-11 at 2 03 43 PM" src="https://user-images.githubusercontent.com/78613787/141354389-c45564a4-9043-412c-864e-5f6cf7dbe781.png">
+        - Users are able to register here
 
-- [ ] \(mm/dd/yyyy of completion) User Login
+- [ ] \(10/12/2021) User Login
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: (Completed)
+    - Direct Link: (https://ss84-prod.herokuapp.com/Project/login.php)
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 (https://github.com/SandeepS3/IT202-011/pull/9)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 <img width="1429" alt="Screen Shot 2021-11-11 at 2 17 25 PM" src="https://user-images.githubusercontent.com/78613787/141355867-389aae3c-364e-4e8f-a42e-eec21fa7a4f1.png">
+        - Users are able to login here
 
-- [ ] \(mm/dd/yyyy of completion) User Logout
+- [ ] \(10/28/2021) User Logout
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Status: (Completed)
     - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 (https://github.com/SandeepS3/IT202-011/pull/20)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 
+      - <img width="393" alt="Screen Shot 2021-11-11 at 3 17 20 PM" src="https://user-images.githubusercontent.com/78613787/141363247-06b0bcb4-798b-4f86-be58-b1301906ad51.png">
+        - User can click logout in the top to logout of their account
 
-- [ ] \(mm/dd/yyyy of completion) Basic Security
+- [ ] \(10/28/2021) Basic Security
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: (Completed)
+    - Direct Link: (https://ss84-prod.herokuapp.com/Project/home.php)
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 (https://github.com/SandeepS3/IT202-011/pull/20)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 <img width="1421" alt="Screen Shot 2021-11-11 at 3 26 31 PM" src="https://user-images.githubusercontent.com/78613787/141364266-3c0a635c-7b80-4348-aee6-1bd27311d571.png">
+        - After the User logs in they are welcomed
 
-- [ ] \(mm/dd/yyyy of completion) Basic Roles
+- [ ] \(10/28/2021) Basic Roles
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: (Completed)
+    - Direct Link: (https://ss84-prod.herokuapp.com/Project/admin/create_role.php)
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 (https://github.com/SandeepS3/IT202-011/pull/20)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 <img width="1436" alt="Screen Shot 2021-11-11 at 4 54 36 PM" src="https://user-images.githubusercontent.com/78613787/141374600-5af483ea-ed52-479c-a0bd-53e654e4f01f.png">
+        - Admin can delete, create, and see roles and when you log in you are greeted with an array of roles
 
-- [ ] \(mm/dd/yyyy of completion) Basic Theme
+- [ ] \(11/11/2021) Basic Theme
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: (Completed)
+    - Direct Link: (https://ss84-prod.herokuapp.com/Project/profile.php)
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 (https://github.com/SandeepS3/IT202-011/pull/24)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 <img width="1430" alt="Screen Shot 2021-11-11 at 4 59 51 PM" src="https://user-images.githubusercontent.com/78613787/141374990-de0bde0f-b731-433d-bc42-4e3a2a4fb9bc.png">
+        - Bootstrap is impletmented and you can see the navigation on the top
 
-- [ ] \(mm/dd/yyyy of completion) Output Messages/Errors
+- [ ] \(10/28/2021) Output Messages/Errors
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: (Completed)
+    - Direct Link: (https://ss84-prod.herokuapp.com/Project/login.php)
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 (https://github.com/SandeepS3/IT202-011/pull/20)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 <img width="1382" alt="Screen Shot 2021-11-11 at 3 41 27 PM" src="https://user-images.githubusercontent.com/78613787/141366203-f762c3de-24cb-4463-b06e-6bea646348a4.png">
+        - User will get error messages when logging in wrong or stuff like that
 
-- [ ] \(mm/dd/yyyy of completion) User see Profile
+- [ ] \(10/28/2021) User See Profile
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: (Completed)
+    - Direct Link: (https://ss84-prod.herokuapp.com/Project/profile.php)
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 (https://github.com/SandeepS3/IT202-011/pull/20)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 <img width="1430" alt="Screen Shot 2021-11-11 at 4 59 51 PM" src="https://user-images.githubusercontent.com/78613787/141374990-de0bde0f-b731-433d-bc42-4e3a2a4fb9bc.png">
+        - User is able to see their profile and change anything they would like to
 
-- [ ] \(mm/dd/yyyy of completion) User Edit Profile
+- [ ] \(10/28/2021) User Edit Profile
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: (Completed)
+    - Direct Link: (https://ss84-prod.herokuapp.com/Project/profile.php)
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 (https://github.com/SandeepS3/IT202-011/pull/20)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 <img width="1430" alt="Screen Shot 2021-11-11 at 4 59 51 PM" src="https://user-images.githubusercontent.com/78613787/141374990-de0bde0f-b731-433d-bc42-4e3a2a4fb9bc.png">
+        - User can edit their profile. Such as their password.
 - Milestone 2
 - Milestone 3
 - Milestone 4
