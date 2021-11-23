@@ -35,6 +35,18 @@ is_logged_in(true);
     context.fillText("This is a Single-Player Game", 120, 300)
     context.fillText("Click Start to Play!", 180, 400)
 
+    //Variables
+    var box1 = false;
+    var box2 = false;
+    var box3 = false;
+    var box4 = false;
+    var box5 = false;
+    var box6 = false;
+    var box7 = false;
+    var box8 = false;
+    var box9 = false;
+    var score = 0
+
 
     function startGame() {
         context.clearRect(0, 0, canvas.width, canvas.height);
@@ -63,7 +75,120 @@ is_logged_in(true);
         context.moveTo(0, 400);
         context.lineTo(600, 400);
         context.stroke();
+
+        //Temporary
+        var randNum = Math.floor(Math.random() * (10)) + 1;
+        console.log(randNum)
+        if (randNum % 2 == 0) {
+            score++
+            console.log('Score is ' + score)
+        }
     }
+
+    function getMousePos(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+            x: evt.clientX - rect.left,
+            y: evt.clientY - rect.top
+        };
+    }
+
+    canvas.addEventListener('click', function(evt) {
+        var mousePos = getMousePos(canvas, evt);
+        console.log('Mouse position: ' + mousePos.x + ',' + mousePos.y)
+
+
+        //Box1
+        if (mousePos.x >= 0 && mousePos.x <= 200) {
+            if (mousePos.y >= 0 && mousePos.y <= 133) {
+                box1 = true;
+                console.log('This is box 1')
+            } else {
+                box1 = false;
+            }
+        }
+
+        //Box2
+        if (mousePos.x >= 200 && mousePos.x <= 400) {
+            if (mousePos.y >= 0 && mousePos.y <= 133) {
+                box2 = true;
+                console.log('This is box 2')
+            } else {
+                box2 = false;
+            }
+        }
+
+        //Box3
+        if (mousePos.x >= 400 && mousePos.x <= 600) {
+            if (mousePos.y >= 0 && mousePos.y <= 133) {
+                box3 = true;
+                console.log('This is box 3')
+            } else {
+                box3 = false;
+            }
+        }
+
+
+        //Box4
+        if (mousePos.x >= 0 && mousePos.x <= 200) {
+            if (mousePos.y >= 134 && mousePos.y <= 266) {
+                box4 = true;
+                console.log('This is box 4')
+            } else {
+                box4 = false;
+            }
+        }
+
+        //Box5
+        if (mousePos.x >= 200 && mousePos.x <= 400) {
+            if (mousePos.y >= 134 && mousePos.y <= 266) {
+                box5 = true;
+                console.log('This is box 5')
+            } else {
+                box5 = false;
+            }
+        }
+
+        //Box6
+        if (mousePos.x >= 400 && mousePos.x <= 600) {
+            if (mousePos.y >= 134 && mousePos.y <= 266) {
+                box6 = true;
+                console.log('This is box 6')
+            } else {
+                box6 = false;
+            }
+        }
+
+        //Box7
+        if (mousePos.x >= 0 && mousePos.x <= 200) {
+            if (mousePos.y >= 266 && mousePos.y <= 400) {
+                box7 = true;
+                console.log('This is box 7')
+            } else {
+                box7 = false;
+            }
+        }
+
+        //Box8
+        if (mousePos.x >= 200 && mousePos.x <= 400) {
+            if (mousePos.y >= 266 && mousePos.y <= 400) {
+                box8 = true;
+                console.log('This is box 8')
+            } else {
+                box8 = false;
+            }
+        }
+
+        //Box9
+        if (mousePos.x >= 400 && mousePos.x <= 600) {
+            if (mousePos.y >= 266 && mousePos.y <= 400) {
+                box9 = true;
+                console.log('This is box 9')
+            } else {
+                box9 = false;
+            }
+        }
+    }, false);
 </script>
 
 </body>
