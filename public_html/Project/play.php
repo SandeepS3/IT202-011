@@ -46,6 +46,7 @@ is_logged_in(true);
     var box8 = false;
     var box9 = false;
     var score = 0
+    var winner = false;
 
 
     function startGame() {
@@ -81,7 +82,10 @@ is_logged_in(true);
         console.log(randNum)
         if (randNum % 2 == 0) {
             score++
+            winner = true
             console.log('Score is ' + score)
+        } else {
+            winner = false
         }
     }
 
