@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS ScoresHistory(
+  id int AUTO_INCREMENT PRIMARY KEY,
+  user_id int,
+  win BOOLEAN,
+  created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES Users(id)
+)
