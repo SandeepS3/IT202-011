@@ -114,47 +114,29 @@
     - Screenshots
       - Screenshot #1 <img width="1430" alt="Screen Shot 2021-11-11 at 4 59 51 PM" src="https://user-images.githubusercontent.com/78613787/141374990-de0bde0f-b731-433d-bc42-4e3a2a4fb9bc.png">
         - User can edit their profile. Such as their password.
-- Milestone 2
+
   
-- [ ] \(mm/dd/yyyy of completion) Choose Game
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+- <table><tr><td>Milestone 2</td></tr><tr><td><table><tr><td>F1 - Pick a simple game to implement, anything that generates a score that’s more advanced than a simple random number generator (may build off of a sample from the site shared in class) (2021-11-30)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
 
-- [ ] \(mm/dd/yyyy of completion) System to Save User Score
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://ss84-prod.herokuapp.com/Project/play.php](https://ss84-prod.herokuapp.com/Project/play.php)</p></td></tr><tr><td>PRs:<p>
 
-- [ ] \(mm/dd/yyyy of completion) User To See Last 10 Scores
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://github.com/SandeepS3/IT202-011/pull/45](https://github.com/SandeepS3/IT202-011/pull/45)</p></td></tr><tr><td><table><tr><td>F1 - What game will you be doing?<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/78613787/144681471-f857c3bf-375b-4ae5-8e23-989e73e53b4b.png"><p>My game is going to be Tic-Tac-Toe. </td></tr></td></tr></table></td></tr><tr><td><table><tr><td>F1 - Briefly describe it.<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/78613787/144681471-f857c3bf-375b-4ae5-8e23-989e73e53b4b.png"><p>Users can play Tic-Tac-Toe against the computer.</td></tr></td></tr></table></td></tr><table><tr><td>F2 - The system will save the user’s score at the end of the game if the user is logged in (2021-12-03)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
 
-- [ ] \(mm/dd/yyyy of completion) Output Scoreboards
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://ss84-prod.herokuapp.com/api/save_score.php](https://ss84-prod.herokuapp.com/api/save_score.php)</p><p>
+
+ [https://ss84-prod.herokuapp.com/Project/play.php](https://ss84-prod.herokuapp.com/Project/play.php)</p></td></tr><tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/47](https://github.com/SandeepS3/IT202-011/pull/47)</p></td></tr><tr><td><table><tr><td>F2 - There should be a scores table (id, user_id, score, created)<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/78613787/144682215-44319dc5-8d2b-4990-9d96-22e7c61d8800.png"><p>mysql database with the scores being saved</td></tr></td></tr></table></td></tr><tr><td><table><tr><td>F2 - Each received score is a new entry (scores will not be updated)<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/78613787/144682284-56d9121d-e48c-4d85-b86b-c2060f53c9d7.png"><p>mysql database showing score history being saved</td></tr></td></tr></table></td></tr><table><tr><td>F3 - The user will be able to see their last 10 scores (2021-12-03)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/api/get_10scores.php](https://ss84-prod.herokuapp.com/api/get_10scores.php)</p><p>
+
+ [https://ss84-prod.herokuapp.com/Project/profile.php](https://ss84-prod.herokuapp.com/Project/profile.php)</p></td></tr><tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/47](https://github.com/SandeepS3/IT202-011/pull/47)</p></td></tr><tr><td><table><tr><td>F3 - Show on their profile page and ordered by most recent<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/78613787/144682633-06197875-842d-47b9-bc09-779dc6125286.png"><p>Users can view last 10 scores from their profile</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/78613787/144682671-6acb0dd4-84fe-4973-8578-a2f07a3e797b.png"><p>Last 10 scores being shown in most recent order</td></tr></td></tr></table></td></tr><table><tr><td>F4 - Create functions that output the following scoreboards (this will be used later) (2021-12-03)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/lib/functions.php](https://ss84-prod.herokuapp.com/lib/functions.php)</p></td></tr><tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/47](https://github.com/SandeepS3/IT202-011/pull/47)</p></td></tr><tr><td><table><tr><td>F4 - All the Functions<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/78613787/144682899-286058f0-6b70-450a-8b8c-7c8d59834bf4.png"><p>Top 10 Weekly, Monthly, and Lifetime functions being created with a limit of 10</td></tr></td></tr></table></td></tr></td></tr></table>
 
 - Milestone 3
 - Milestone 4
