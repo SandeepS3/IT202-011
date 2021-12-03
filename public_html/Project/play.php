@@ -12,7 +12,7 @@ is_logged_in(true);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 <body>
     <div style="text-align:center;">
@@ -397,6 +397,22 @@ is_logged_in(true);
         return null;
     }
 
+    function sendData(gameover) {
+        $.ajax({
+            url: "api/save_score.php",
+            type: "post",
+            data: {
+                "GameWon": gameover
+            },
+            success: (resp, status, xhr) => {
+                console.log(resp)
+            },
+            error: (xhr, status, error) => {
+                console.log(xhr, status, error);
+            }
+        });
+    }
+
     function main(evt) {
         console.log(spaces)
         erase()
@@ -411,6 +427,7 @@ is_logged_in(true);
         if (X_WON() !== null) {
             console.log("Game Ended")
             canvas.removeEventListener("click", main)
+            sendData(X_WON())
             return;
         }
         console.log(spaces.includes(null), spaces)
@@ -418,6 +435,7 @@ is_logged_in(true);
             flash(" Draw!!!")
             console.log("Draw")
             canvas.removeEventListener("click", main)
+            sendData(X_WON())
             // endGame();
             console.log(spaces)
         }
@@ -425,14 +443,17 @@ is_logged_in(true);
         if (X_WON() !== null) {
             console.log("Game Ended")
             canvas.removeEventListener("click", main)
+            sendData(X_WON())
             return;
         }
         if (!spaces.includes(null)) {
             flash(" Draw!!!")
             console.log("Draw")
             canvas.removeEventListener("click", main)
+            sendData(X_WON())
             // endGame();
             console.log(spaces)
+            return;
         }
 
         console.log(spaces)

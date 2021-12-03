@@ -130,26 +130,33 @@ function get_url($dest)
     //handle relative path
     return $BASE_PATH . $dest;
 }
-
-
-function save_score($score, $user_id, $showFlash = false)
+function get_top10_weekly()
 {
-    if ($user_id < 1) {
-        flash("Error saving score, you may not be logged in", "warning");
-        return;
-    }
-    if ($score <= 0) {
-        flash("Scores of zero are not recorded", "warning");
-        return;
-    }
     $db = getDB();
-    $stmt = $db->prepare("INSERT INTO BGD_Scores (score, user_id) VALUES (:score, :uid)");
-    try {
-        $stmt->execute([":score" => $score, ":uid" => $user_id]);
-        if ($showFlash) {
-            flash("Saved score of $score", "success");
-        }
-    } catch (PDOException $e) {
-        flash("Error saving score: " . var_export($e->errorInfo, true), "danger");
-    }
+    $timestamp = date('Y-m-d H:i:s', time() - (7 * 86400));
+    $getScores = $db->prepare("SELECT * FROM Scores WHERE modified >=:theTime ORDER BY score DESC LIMIT 10");
+    $getScores->execute([":theTime" => $timestamp]);
+    $theFetch = $getScores->fetchAll();
+    $json = json_encode($theFetch);
+    return $json;
+    // return $theFetch;
+}
+function get_top10_monthly()
+{
+    $db = getDB();
+    $timestamp = date('Y-m-d H:i:s', time() - (30.5 * 86400));
+    $getScores = $db->prepare("SELECT * FROM Scores WHERE modified >=:theTime ORDER BY score DESC LIMIT 10");
+    $getScores->execute([":theTime" => $timestamp]);
+    $theFetch = $getScores->fetchAll();
+    $json = json_encode($theFetch);
+    return $json;
+}
+function get_top10_lifetime()
+{
+    $db = getDB();
+    $getScores = $db->prepare("SELECT * FROM Scores ORDER BY score DESC LIMIT 10");
+    $getScores->execute();
+    $theFetch = $getScores->fetchAll();
+    $json = json_encode($theFetch);
+    return $json;
 }
