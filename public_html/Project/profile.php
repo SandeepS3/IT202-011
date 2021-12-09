@@ -149,7 +149,6 @@ $username = get_username();
     }
 
     function getScores() {
-        console.log("Brooooo")
         $("#showScoresBtn").hide()
         $.ajax({
             url: "api/get_10scores.php",
