@@ -114,6 +114,8 @@ $username = get_username();
         <input type="submit" class="mt-3 btn btn-primary" value="Update Profile" name="save" />
     </form>
 </div>
+<p>Points: </p>
+<p class="theScoreOrPoints" id="points"></p>
 <div class="container-fluid">
     <button id="showScoresBtn" onclick='getScores()' class="mt-3 btn btn-primary">Show last 10 Scores</button>
     <ol id="last10Scores">
@@ -149,7 +151,6 @@ $username = get_username();
     }
 
     function getScores() {
-        console.log("Brooooo")
         $("#showScoresBtn").hide()
         $.ajax({
             url: "api/get_10scores.php",
@@ -173,7 +174,7 @@ $username = get_username();
             const li = document.createElement("li")
             const div = document.createElement("div")
 
-            msg = score.win === "0" ? "You lost" : "You won!!!"
+            msg = score.win === "0" ? "You did not win :(" : "You won!!!"
             const date = new Date(score.created)
             const options = {
                 weekday: 'short',
@@ -187,6 +188,8 @@ $username = get_username();
             theUl.appendChild(li);
         })
     }
+
+    $("#points").load("api/get_points.php");
 </script>
 
 <?php

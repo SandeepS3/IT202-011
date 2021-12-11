@@ -19,7 +19,8 @@ is_logged_in(true);
         <canvas style="border: 1px solid black;" id="canvas" width="600" height="600" tabindex="1"></canvas>
         <button onclick="menu()">Start</button>
     </div>
-
+    <p>Points: </p>
+    <p class="theScoreOrPoints" id="points"></p>
 </body>
 <script>
     // Tic-Tac-Toe
@@ -257,11 +258,22 @@ is_logged_in(true);
         }
     }
 
-    function drawO(ind) {
+    function drawO() {
         let randO = Math.floor(Math.random() * (9));
         while (spaces[randO] !== null) {
             randO = Math.floor(Math.random() * (9));
             console.log("new O needed")
+            let broken = false
+            for (let i = 0; i < 9; i++) {
+                if (spaces[i] == null) {
+                    broken = true;
+                    break;
+                }
+            }
+            if (!broken) {
+                //no more null values
+                return;
+            }
         }
 
         spaces[randO] = 'o'
@@ -393,7 +405,6 @@ is_logged_in(true);
             return false
 
         }
-
         return null;
     }
 
@@ -424,10 +435,18 @@ is_logged_in(true);
             flash("Space taked", "warning")
         }
         drawX(boxIndexNum)
+        drawO()
+        //not draw
         if (X_WON() !== null) {
             console.log("Game Ended")
             canvas.removeEventListener("click", main)
-            sendData(X_WON())
+            const winstat = X_WON()
+            sendData(winstat)
+            if (winstat == true) {
+                sendDatabase(3, 'User Won')
+            } else if (winstat == false) {
+                sendDatabase(-3, 'User Lost')
+            }
             return;
         }
         console.log(spaces.includes(null), spaces)
@@ -435,31 +454,54 @@ is_logged_in(true);
             flash(" Draw!!!")
             console.log("Draw")
             canvas.removeEventListener("click", main)
-            sendData(X_WON())
+            const winstat = X_WON()
+            sendData(winstat)
+            if (winstat == null) {
+                sendDatabase(-1, 'User Draw')
+            }
             // endGame();
             console.log(spaces)
         }
-        drawO(boxIndexNum)
-        if (X_WON() !== null) {
-            console.log("Game Ended")
-            canvas.removeEventListener("click", main)
-            sendData(X_WON())
-            return;
-        }
-        if (!spaces.includes(null)) {
-            flash(" Draw!!!")
-            console.log("Draw")
-            canvas.removeEventListener("click", main)
-            sendData(X_WON())
-            // endGame();
-            console.log(spaces)
-            return;
-        }
+        // drawO()
+        // if (X_WON() !== null) {
+        //     console.log("Game Ended")
+        //     canvas.removeEventListener("click", main)
+        //     sendData(X_WON())
+        //     return;
+        // }
+        // if (!spaces.includes(null)) {
+        //     flash(" Draw!!!")
+        //     console.log("Draw")
+        //     canvas.removeEventListener("click", main)
+        //     sendData(X_WON())
+        //     // endGame();
+        //     console.log(spaces)
+        //     return;
+        // }
 
         console.log(spaces)
     }
 
+    function sendDatabase(pointsUpdate, reason) {
+        $.ajax({
+            url: "api/save_points.php",
+            type: "post",
+            data: {
+                "points": pointsUpdate,
+                "reason": reason,
+            },
+            success: (resp, status, xhr) => {
+                console.log("resp", resp)
+                $("#points").load("api/get_points.php");
+
+            },
+            error: (xhr, status, error) => {
+                console.log(xhr, status, error);
+            }
+        });
+    }
     menu()
+    $("#points").load("api/get_points.php");
 </script>
 <?php
 require(__DIR__ . "/../../partials/flash.php");
