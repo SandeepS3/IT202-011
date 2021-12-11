@@ -194,28 +194,6 @@ function save_data($table, $data, $ignore = ["submit"])
     }
 }
 
-function updateScore($boardSolved)
-{
-    $db = getDB();
-    $userId = get_user_id();
-    if ($boardSolved === 1) {
-        //+1 to users score
-        $getScore = $db->prepare("SELECT score from Scores where user_id = :userId");
-        $getScore->execute([":userId" => $userId]);
-        $theFetch = $getScore->fetch();
-
-        if ($theFetch === false) {
-            $putScore = $db->prepare("INSERT INTO Scores (score,user_id) VALUES (:newScore,:userId)");
-        } else {
-            $putScore = $db->prepare("UPDATE Scores SET score=:newScore where user_id = :userId");
-        }
-        $theScore = $theFetch === false ? "0" : $theFetch["score"];
-        $putScore->execute([":newScore" => $theScore + 1, ":userId" => $userId]);
-        echo "Correct Board\n";
-    }
-    $addAttempt = $db->prepare("INSERT INTO ScoreHistory (user_id,correct) VALUES (:userId,:correctBrd)");
-    $addAttempt->execute([":userId" => $userId, ":correctBrd" => $boardSolved]);
-}
 function updatePoints($thePoints, $reason)
 {
     $db = getDB();
@@ -295,4 +273,60 @@ function get_top10_lifetime()
     $theFetch = $getScores->fetchAll();
     $json = json_encode($theFetch);
     return $json;
+}
+
+function getCompWinners()
+{
+    $db = getDB();
+    $getComps = $db->prepare("SELECT * FROM Competitions WHERE paid_out=0 AND expires<CURRENT_TIMESTAMP");
+    $getComps->execute();
+    $theComps = $getComps->fetchAll();
+
+    foreach ($theComps as $aComp) {
+        if ($aComp["current_participants"] < $aComp["min_participants"]) continue;
+
+        $getPlayers = $db->prepare("SELECT * FROM CompetitionParticipants WHERE comp_id=:compId");
+        $getPlayers->execute([":compId" => $aComp["id"]]);
+        $thePlayers = $getPlayers->fetchAll();
+        // echo "<br>".var_export(count($thePlayers))."</br>";
+        $top3Payrate = [$aComp["first_place"], $aComp["second_place"], $aComp["third_place"]];
+
+        $top3Ids = [0, 0, 0]; //ids of the top 3 players
+        $top3 = [0, 0, 0]; //points of the top 3 players. Connected with top3Ids via index
+        foreach ($thePlayers as $player) {
+            $getScore = $db->prepare("SELECT IFNULL(sum(1),0) FROM ScoreHistory WHERE user_id=:uid AND correct=1 AND created>=:startTime AND created<= :endTime");
+            $getScore->execute([":uid" => $player["user_id"], ":startTime" => $aComp["created"], "endTime" => $aComp["expires"]]);
+            $theScore = $getScore->fetch()['IFNULL(sum(1),0)'];
+            if ($theScore > $top3[2]) {
+                if ($theScore > $top3[1]) {
+                    if ($theScore > $top3[0]) {
+                        $top3[2] = $top3[1];
+                        $top3[1] = $top3[0];
+                        $top3[0] = $theScore;
+
+                        $top3Ids[2] = $top3Ids[1];
+                        $top3Ids[1] = $top3Ids[0];
+                        $top3Ids[0] = $player["user_id"];
+                    } elseif ($theScore < $top3[0]) {
+                        $top3[2] = $top3[1];
+                        $top3[1] = $theScore;
+
+                        $top3Ids[2] = $top3Ids[1];
+                        $top3Ids[1] = $player["user_id"];
+                    }
+                } elseif ($theScore < $top3[1]) {
+                    $top3[2] = $theScore;
+                    $top3Ids[2] = $player["user_id"];
+                }
+            }
+        }
+        for ($i = 0; $i < 3; $i++) {
+            $points = ceil($aComp["current_reward"] * ($top3Payrate[$i] / 100));
+            $place = $i + 1;
+            updatePoints($points, "Got $place place in Comp", $top3Ids[$i]);
+        }
+
+        $updatePayout = $db->prepare("UPDATE Competitions SET paid_out=1 WHERE id=:cid");
+        $updatePayout->execute(["cid" => $aComp["id"]]);
+    }
 }
