@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS Competitions(
   first_place int default 70,
   second_place int default 20,
   third_place int default 10,
-  cost_to_create int default (starting_reward + 1),
+  cost_to_create int default (join_fee + starting_reward + 1),
   created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   creator_id int,

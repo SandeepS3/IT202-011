@@ -133,19 +133,22 @@ function get_url($dest)
 function update_participants($comp_id)
 {
     $db = getDB();
-    $stmt = $db->prepare("UPDATE Competitions set current_participants = (SELECT IFNULL(COUNT(1),0) FROM CompetitionParticipants WHERE competition_id = :cid), 
+    $stmt = $db->prepare("UPDATE Competitions set current_participants = (SELECT IFNULL(COUNT(1),0) FROM CompetitionParticipants WHERE comp_id = :cid), 
     current_reward = IFNULL(current_reward,0)+1 WHERE id = :cid");
     try {
         $stmt->execute([":cid" => $comp_id]);
         return true;
     } catch (PDOException $e) {
         error_log("Update competition participant error: " . var_export($e, true));
+        echo var_export($e);
+        flash("ERROR", "danger");
     }
     return false;
 }
 
-function add_to_competition($comp_id, $user_id)
+function add_to_competition($comp_id)
 {
+    $user_id = get_user_id();
     $db = getDB();
     $stmt = $db->prepare("INSERT INTO CompetitionParticipants (user_id, comp_id) VALUES (:uid, :cid)");
     try {
@@ -154,6 +157,8 @@ function add_to_competition($comp_id, $user_id)
         return true;
     } catch (PDOException $e) {
         error_log("Join Competition error: " . var_export($e, true));
+        echo "ERROR";
+        flash("ERROR", "danger");
     }
     return false;
 }
@@ -189,6 +194,77 @@ function save_data($table, $data, $ignore = ["submit"])
     }
 }
 
+function updateScore($boardSolved)
+{
+    $db = getDB();
+    $userId = get_user_id();
+    if ($boardSolved === 1) {
+        //+1 to users score
+        $getScore = $db->prepare("SELECT score from Scores where user_id = :userId");
+        $getScore->execute([":userId" => $userId]);
+        $theFetch = $getScore->fetch();
+
+        if ($theFetch === false) {
+            $putScore = $db->prepare("INSERT INTO Scores (score,user_id) VALUES (:newScore,:userId)");
+        } else {
+            $putScore = $db->prepare("UPDATE Scores SET score=:newScore where user_id = :userId");
+        }
+        $theScore = $theFetch === false ? "0" : $theFetch["score"];
+        $putScore->execute([":newScore" => $theScore + 1, ":userId" => $userId]);
+        echo "Correct Board\n";
+    }
+    $addAttempt = $db->prepare("INSERT INTO ScoreHistory (user_id,correct) VALUES (:userId,:correctBrd)");
+    $addAttempt->execute([":userId" => $userId, ":correctBrd" => $boardSolved]);
+}
+function updatePoints($thePoints, $reason)
+{
+    $db = getDB();
+    $userId = get_user_id();
+    $putPoints = $db->prepare("INSERT INTO PointsHistory (user_id,point_change,reason) VALUES (:userId,:thePoints,:reason)");
+    $putPoints->execute([":userId" => $userId, ":thePoints" => $thePoints, ":reason" => $reason]);
+
+    $updatePoints = $db->prepare("UPDATE Users SET points = (SELECT (ifnull(sum(point_change),0)+10) from PointsHistory where user_id = :userId) where id = :userId");
+    $updatePoints->execute([":userId" => $userId]);
+}
+
+function inComp($compsRow)
+{
+    $uid = get_user_id();
+    $db = getDB();
+    if ($uid == $compsRow["creator_id"]) {
+        return true;
+    }
+    $stmt = $db->prepare("SELECT * FROM CompetitionParticipants WHERE user_id=:uid");
+    $results = []; //all rows from CompetitionParticipants where id==uid
+    try {
+        $stmt->execute([":uid" => $uid]);
+        $r = $stmt->fetchAll();
+        if ($r) {
+            $results = $r;
+        }
+    } catch (PDOException $e) {
+        flash("There was a problem fetching competitions, please try again later", "danger");
+        error_log("List competitions error: " . var_export($e, true));
+    }
+
+    foreach ($results as $row) {
+        if ($row["comp_id"] == $compsRow["id"]) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function getUserScore()
+{
+    $db = getDB();
+    $userId = get_user_id();
+    $getScore = $db->prepare("SELECT score from Scores where user_id = :userId");
+    $getScore->execute([":userId" => $userId]);
+    $theFetch = $getScore->fetch();
+    $theScore = $theFetch === false ? "0" : $theFetch["score"];
+    return $theScore;
+}
 
 function get_top10_weekly()
 {
