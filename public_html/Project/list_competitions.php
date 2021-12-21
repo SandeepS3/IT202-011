@@ -1,6 +1,11 @@
 <?php
 require_once(__DIR__ . "/../../partials/nav.php");
 is_logged_in(true);
+if (!isset($_GET["page"])) {
+    $page = 1;
+} else {
+    $page = $_GET["page"];
+}
 $db = getDB();
 //handle join
 if (isset($_POST["join"])) {
@@ -11,10 +16,11 @@ if (isset($_POST["join"])) {
     add_to_competition($comp_id);
     flash("Successfully added to the Competition!!!", "success");
 }
+//$per_page = 5;
+$per_page = 10;
+$startRow = ($page - 1) * $per_page;
 
-$per_page = 5;
-
-$stmt = $db->prepare("SELECT * FROM Competitions WHERE expires>CURRENT_TIMESTAMP ORDER BY expires ASC LIMIT 10");
+$stmt = $db->prepare("SELECT * FROM Competitions WHERE expires>CURRENT_TIMESTAMP ORDER BY expires ASC LIMIT " . $startRow . "," . $per_page);
 $results = [];
 try {
     $stmt->execute();
@@ -26,6 +32,12 @@ try {
     flash("There was a problem fetching competitions, please try again later", "danger");
     error_log("List competitions error: " . var_export($e, true));
 }
+
+$numOfRows = $db->prepare("SELECT * FROM Competitions WHERE expires>CURRENT_TIMESTAMP ORDER BY expires");
+$numOfRows->execute();
+$numOfRows = $numOfRows->rowCount();
+
+$numOfPages = ceil($numOfRows / $per_page);
 ?>
 <div class="container-fluid">
     <h1>List Competitions</h1>
@@ -75,5 +87,9 @@ try {
     </table>
 </div>
 <?php
+for ($i = 1; $i <= $numOfPages; $i++) {
+    $j = "<a type='button' class='btn btn-primary' href='active_comps.php?page=" . $i . "'>Page " . $i . "</a> ";
+    echo $j;
+}
 require(__DIR__ . "/../../partials/flash.php");
 ?>
