@@ -248,31 +248,33 @@ function get_top10_weekly()
 {
     $db = getDB();
     $timestamp = date('Y-m-d H:i:s', time() - (7 * 86400));
-    $getScores = $db->prepare("SELECT * FROM Scores WHERE modified >=:theTime ORDER BY score DESC LIMIT 10");
+    $getScores = $db->prepare("SELECT username,score FROM Scores INNER JOIN Users on Scores.user_id= Users.id WHERE Scores.modified >=:theTime ORDER BY score DESC LIMIT 10");
     $getScores->execute([":theTime" => $timestamp]);
     $theFetch = $getScores->fetchAll();
-    $json = json_encode($theFetch);
-    return $json;
-    // return $theFetch;
+    // $json = json_encode($theFetch);
+    // return $json;
+    return $theFetch;
 }
 function get_top10_monthly()
 {
     $db = getDB();
     $timestamp = date('Y-m-d H:i:s', time() - (30.5 * 86400));
-    $getScores = $db->prepare("SELECT * FROM Scores WHERE modified >=:theTime ORDER BY score DESC LIMIT 10");
+    $getScores = $db->prepare("SELECT username,score FROM Scores INNER JOIN Users on Scores.user_id= Users.id WHERE Scores.modified >=:theTime ORDER BY score DESC LIMIT 10");
     $getScores->execute([":theTime" => $timestamp]);
     $theFetch = $getScores->fetchAll();
-    $json = json_encode($theFetch);
-    return $json;
+    // $json = json_encode($theFetch);
+    // return $json;
+    return $theFetch;
 }
 function get_top10_lifetime()
 {
     $db = getDB();
-    $getScores = $db->prepare("SELECT * FROM Scores ORDER BY score DESC LIMIT 10");
+    $getScores = $db->prepare("SELECT username,score FROM Scores INNER JOIN Users on Scores.user_id= Users.id ORDER BY Scores.score DESC LIMIT 10");
     $getScores->execute();
     $theFetch = $getScores->fetchAll();
-    $json = json_encode($theFetch);
-    return $json;
+    // $json = json_encode($theFetch);
+    // return $json;
+    return $theFetch;
 }
 
 function getCompWinners()
