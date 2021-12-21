@@ -6,10 +6,9 @@ is_logged_in(true);
 if (isset($_POST["save"])) {
     $email = se($_POST, "email", null, false);
     $username = se($_POST, "username", null, false);
+    $visibility = se($_POST, "visibility", null, false) == "" ? "public" : "private";
     $hasError = false;
-    //sanitize
     $email = sanitize_email($email);
-    //validate
     if (!is_valid_email($email)) {
         flash("Invalid email address", "danger");
         $hasError = true;
@@ -19,11 +18,13 @@ if (isset($_POST["save"])) {
         $hasError = true;
     }
     if (!$hasError) {
-        $params = [":email" => $email, ":username" => $username, ":id" => get_user_id()];
+        $params = [":email" => $email, ":username" => $username, ":visibility" => $visibility, ":id" => get_user_id()];
         $db = getDB();
-        $stmt = $db->prepare("UPDATE Users set email = :email, username = :username where id = :id");
+        $stmt = $db->prepare("UPDATE Users set email = :email, username = :username, visibility = :visibility where id = :id");
         try {
             $stmt->execute($params);
+            $_SESSION["user"]["visibility"] = $visibility;
+            flash("Details Updated!", "success");
         } catch (Exception $e) {
             users_check_duplicate($e->errorInfo);
         }
@@ -82,6 +83,7 @@ if (isset($_POST["save"])) {
 ?>
 
 <?php
+$visibility = get_visibility();
 $email = get_user_email();
 $username = get_username();
 ?>
@@ -111,7 +113,17 @@ $username = get_username();
             <label class="form-label" for="conp">Confirm Password</label>
             <input class="form-control" type="password" name="confirmPassword" id="conp" />
         </div>
+
+        <div class="mb-3" style="flex-direction: column;">
+            <label style="flex:1" class="form-label" id="switchLabel" for="switchVisibility">Profile Visibility : Private</label>
+            <label style="flex:1" class="switch">
+                <input type="checkbox" onclick="buttonfuc()" id="switchVisibility" name="visibility">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
         <input type="submit" class="mt-3 btn btn-primary" value="Update Profile" name="save" />
+
     </form>
 </div>
 <div class="container-fluid">
@@ -125,23 +137,7 @@ $username = get_username();
         let con = form.confirmPassword.value;
         let isValid = true;
         //TODO add other client side validation....
-
-        //example of using flash via javascript
-        //find the flash container, create a new element, appendChild
         if (pw !== con) {
-            //find the container
-            /*let flash = document.getElementById("flash");
-            //create a div (or whatever wrapper we want)
-            let outerDiv = document.createElement("div");
-            outerDiv.className = "row justify-content-center";
-            let innerDiv = document.createElement("div");
-            //apply the CSS (these are bootstrap classes which we'll learn later)
-            innerDiv.className = "alert alert-warning";
-            //set the content
-            innerDiv.innerText = "Password and Confirm password must match";
-            outerDiv.appendChild(innerDiv);
-            //add the element to the DOM (if we don't it merely exists in memory)
-            flash.appendChild(outerDiv);*/
             flash("Password and Confirm password must match", "warning");
             isValid = false;
         }
@@ -186,6 +182,27 @@ $username = get_username();
             theUl.appendChild(li);
         })
     }
+
+    function buttonfuc() {
+        const thebutton = document.getElementById("switchVisibility")
+        const label = document.getElementById("switchLabel")
+        if (thebutton.checked) {
+            label.innerText = "Profile Visibility : Private"
+            thebutton.value = "private";
+        } else {
+            label.innerText = "Profile Visibility : Public"
+            thebutton.value = "public";
+        }
+    }
+
+    function firstbuttonrun() {
+        const thebutton = document.getElementById("switchVisibility")
+        checkVal = "<?php echo se($visibility, null, "", false) == "public" ? "false" : "true"; ?>" == "false" ? false : true
+        thebutton.checked = checkVal
+        buttonfuc()
+    }
+
+    firstbuttonrun()
 </script>
 
 <?php

@@ -160,3 +160,11 @@ function get_top10_lifetime()
     $json = json_encode($theFetch);
     return $json;
 }
+
+function get_visibility()
+{
+    if (is_logged_in()) { //we need to check for login first because "user" key may not exist
+        return se($_SESSION["user"], "visibility", "", false);
+    }
+    return "";
+}
