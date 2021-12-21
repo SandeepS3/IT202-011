@@ -34,7 +34,11 @@ $results = $allComps;
             <?php if (count($results) > 0) : ?>
                 <?php foreach ($results as $row) : ?>
                     <tr>
-                        <td><?php se($row, "comp_name"); ?></td>
+                        <td>
+                            <a href="comp_leaderboard.php?comp=<?php se($row, "comp_name"); ?>">
+                                <?php se($row, "comp_name"); ?>
+                            </a>
+                        </td>
                         <td><?php se($row, "duration"); ?></td>
                         <td><?php se($row, "expires"); ?></td>
                         <td><?php se($row, "current_participants"); ?></td>

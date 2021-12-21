@@ -38,7 +38,11 @@ $lifetime = get_top10_lifetime();
                 <?php if (count($weekly) > 0) : ?>
                     <?php foreach ($weekly as $row) : ?>
                         <tr>
-                            <td><?php se($row, "username"); ?></td>
+                            <td>
+                                <a href="viewothers.php?player=<?php se($row, "username"); ?>">
+                                    <?php se($row, "username"); ?>
+                                </a>
+                            </td>
                             <td><?php se($row, "score"); ?></td>
                         </tr>
                     <?php endforeach; ?>
@@ -60,7 +64,11 @@ $lifetime = get_top10_lifetime();
                 <?php if (count($monthly) > 0) : ?>
                     <?php foreach ($monthly as $row) : ?>
                         <tr>
-                            <td><?php se($row, "username"); ?></td>
+                            <td>
+                                <a href="viewothers.php?player=<?php se($row, "username"); ?>">
+                                    <?php se($row, "username"); ?>
+                                </a>
+                            </td>
                             <td><?php se($row, "score"); ?></td>
                         </tr>
                     <?php endforeach; ?>
@@ -82,7 +90,11 @@ $lifetime = get_top10_lifetime();
                 <?php if (count($lifetime) > 0) : ?>
                     <?php foreach ($lifetime as $row) : ?>
                         <tr>
-                            <td><?php se($row, "username"); ?></td>
+                            <td>
+                                <a href="viewothers.php?player=<?php se($row, "username"); ?>">
+                                    <?php se($row, "username"); ?>
+                                </a>
+                            </td>
                             <td><?php se($row, "score"); ?></td>
                         </tr>
                     <?php endforeach; ?>
