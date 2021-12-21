@@ -48,9 +48,9 @@ require_once(__DIR__ . "/../lib/functions.php");
                         <ul class="dropdown-menu bg-warning" aria-labelledby="rolesDropdown">
                             <li><a class="dropdown-item" href="<?php echo get_url('create_competition.php'); ?>">Create Competition</a></li>
                             <li><a class="dropdown-item" href="<?php echo get_url('list_competitions.php'); ?>">Active Competitions</a></li>
+                            <li><a class="dropdown-item" href="<?php echo get_url('comp_history.php'); ?>">Competitions History</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="<?php echo get_url('comp_history.php'); ?>">Competitions History</a></li>
                 <?php endif; ?>
 
                 <?php if (!is_logged_in()) : ?>
