@@ -3,6 +3,24 @@ require_once(__DIR__ . "/../../partials/nav.php");
 is_logged_in(true);
 ?>
 <?php
+$db = getDB();
+$getScores = $db->prepare("SELECT * FROM ScoresHistory WHERE user_id = :userId");
+$getScores->execute([":userId" => get_user_id()]);
+$totalRows = $getScores->rowCount();
+$resultsPerPage = 10;
+$numOfPages = ceil($totalRows / $resultsPerPage);
+
+
+if (!isset($_GET["page"])) {
+    die(header("Location: profile.php?page=1"));
+} else if ($_GET["page"] < 1) {
+    die(header("Location: profile.php?page=1"));
+} else if ($_GET["page"] > $numOfPages) {
+    die(header("Location: profile.php?page=" . $numOfPages));
+} else {
+    $page = $_GET["page"];
+}
+$row = ($page - 1) * $resultsPerPage;
 if (isset($_POST["save"])) {
     $email = se($_POST, "email", null, false);
     $username = se($_POST, "username", null, false);
@@ -88,6 +106,30 @@ $email = get_user_email();
 $username = get_username();
 ?>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<style>
+    .pagination {
+        display: inline-block;
+    }
+
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd;
+    }
+
+    .pagination a.active {
+        background-color: #4CAF50;
+        color: white;
+        border: 1px solid #4CAF50;
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: #ddd;
+    }
+</style>
 <div class="container-fluid">
     <h1>Profile</h1>
     <form method="POST" onsubmit="return validate(this);">
@@ -129,7 +171,7 @@ $username = get_username();
 <p>Points: </p>
 <p class="theScoreOrPoints" id="points"></p>
 <div class="container-fluid">
-    <button id="showScoresBtn" onclick='getScores()' class="mt-3 btn btn-primary">Show last 10 Scores</button>
+    <!-- <button id="showScoresBtn" onclick='getScores()' class="mt-3 btn btn-primary">Show last 10 Scores</button> -->
     <ol id="last10Scores">
     </ol>
 </div>
@@ -146,10 +188,14 @@ $username = get_username();
         return isValid;
     }
 
-    function getScores() {
-        $("#showScoresBtn").hide()
+    function getScores(start = 0, numOfres = 5) {
         $.ajax({
             url: "api/get_10scores.php",
+            type: "post",
+            data: {
+                "start": start,
+                "resultnum": numOfres,
+            },
             success: (resp, status, xhr) => {
                 theScores = JSON.parse(resp);
                 showScores(theScores)
@@ -207,10 +253,19 @@ $username = get_username();
         buttonfuc()
     }
 
+    getScores(<?php echo $row ?>, <?php echo $resultsPerPage ?>)
     firstbuttonrun()
-
 </script>
 
 <?php
+// echo var_export($row);
+// echo var_export($resultsPerPage);
+if ($page - 1 == 0) $page = 2;
+if ($page + 1 == $numOfPages + 1) $page = $numOfPages - 1;
+$j = '<div class="pagination">
+        <a href="profile.php?page=' . ($page - 1) . '">❮</a>
+        <a href="profile.php?page=' . ($page + 1) . '">❯</a>
+    </div>';
+echo $j;
 require_once(__DIR__ . "/../../partials/flash.php");
 ?>
