@@ -329,11 +329,12 @@ function getCompWinners()
         $updatePayout = $db->prepare("UPDATE Competitions SET paid_out=1 WHERE id=:cid");
         $updatePayout->execute(["cid" => $aComp["id"]]);
     }
+}
+
 function get_visibility()
 {
     if (is_logged_in()) { //we need to check for login first because "user" key may not exist
         return se($_SESSION["user"], "visibility", "", false);
     }
     return "";
-
 }
