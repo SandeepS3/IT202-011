@@ -338,3 +338,28 @@ function get_visibility()
     }
     return "";
 }
+
+function get_user_comp_history($start = 0, $end = 5)
+{
+    $db = getDB();
+    $uid = get_user_id();
+    $getHist = $db->prepare("SELECT comp_id FROM CompetitionParticipants  WHERE user_id= :uid");
+    $getHist->execute([":uid" => $uid]);
+    $allCompsIdObj = $getHist->fetchAll();
+
+    $theQuery = "SELECT * FROM Competitions WHERE id in (";
+    foreach ($allCompsIdObj as $theId) {
+        $compId = $theId["comp_id"];
+        $theQuery .= $compId . ",";
+    }
+    $theQuery = substr_replace($theQuery, ")", -1); // replace last char in str with ")"    
+    $theQuery .= " LIMIT " . $start . "," . $end;
+    $getComps = $db->prepare($theQuery);
+    try {
+        $getComps->execute();
+    } catch (PDOException $e) {
+        return $e;
+    }
+    $compLst = $getComps->fetchAll();
+    return [count($allCompsIdObj), $compLst]; //total rows, the rows
+}
