@@ -88,7 +88,7 @@ $numOfPages = ceil($numOfRows / $per_page);
 </div>
 <?php
 for ($i = 1; $i <= $numOfPages; $i++) {
-    $j = "<a type='button' class='btn btn-primary' href='active_comps.php?page=" . $i . "'>Page " . $i . "</a> ";
+    $j = "<a type='button' class='btn btn-primary' href='list_competitions.php?page=" . $i . "'>Page " . $i . "</a> ";
     echo $j;
 }
 require(__DIR__ . "/../../partials/flash.php");
