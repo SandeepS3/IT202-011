@@ -114,50 +114,458 @@
     - Screenshots
       - Screenshot #1 <img width="1430" alt="Screen Shot 2021-11-11 at 4 59 51 PM" src="https://user-images.githubusercontent.com/78613787/141374990-de0bde0f-b731-433d-bc42-4e3a2a4fb9bc.png">
         - User can edit their profile. Such as their password.
-- Milestone 2
+
   
-- [ ] \(mm/dd/yyyy of completion) Choose Game
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+- <table><tr><td>Milestone 2</td></tr><tr><td><table><tr><td>F1 - Pick a simple game to implement, anything that generates a score that’s more advanced than a simple random number generator (may build off of a sample from the site shared in class) (2021-11-30)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
 
-- [ ] \(mm/dd/yyyy of completion) System to Save User Score
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://ss84-prod.herokuapp.com/Project/play.php](https://ss84-prod.herokuapp.com/Project/play.php)</p></td></tr><tr><td>PRs:<p>
 
-- [ ] \(mm/dd/yyyy of completion) User To See Last 10 Scores
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://github.com/SandeepS3/IT202-011/pull/45](https://github.com/SandeepS3/IT202-011/pull/45)</p></td></tr><tr><td><table><tr><td>F1 - What game will you be doing?<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/78613787/144681471-f857c3bf-375b-4ae5-8e23-989e73e53b4b.png"><p>My game is going to be Tic-Tac-Toe. </td></tr></td></tr></table></td></tr><tr><td><table><tr><td>F1 - Briefly describe it.<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/78613787/144681471-f857c3bf-375b-4ae5-8e23-989e73e53b4b.png"><p>Users can play Tic-Tac-Toe against the computer.</td></tr></td></tr></table></td></tr><table><tr><td>F2 - The system will save the user’s score at the end of the game if the user is logged in (2021-12-03)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
 
-- [ ] \(mm/dd/yyyy of completion) Output Scoreboards
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://ss84-prod.herokuapp.com/api/save_score.php](https://ss84-prod.herokuapp.com/api/save_score.php)</p><p>
 
-- Milestone 3
-- 
+ [https://ss84-prod.herokuapp.com/Project/play.php](https://ss84-prod.herokuapp.com/Project/play.php)</p></td></tr><tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/47](https://github.com/SandeepS3/IT202-011/pull/47)</p></td></tr><tr><td><table><tr><td>F2 - There should be a scores table (id, user_id, score, created)<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/78613787/144682215-44319dc5-8d2b-4990-9d96-22e7c61d8800.png"><p>mysql database with the scores being saved</td></tr></td></tr></table></td></tr><tr><td><table><tr><td>F2 - Each received score is a new entry (scores will not be updated)<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/78613787/144682284-56d9121d-e48c-4d85-b86b-c2060f53c9d7.png"><p>mysql database showing score history being saved</td></tr></td></tr></table></td></tr><table><tr><td>F3 - The user will be able to see their last 10 scores (2021-12-03)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/api/get_10scores.php](https://ss84-prod.herokuapp.com/api/get_10scores.php)</p><p>
+
+ [https://ss84-prod.herokuapp.com/Project/profile.php](https://ss84-prod.herokuapp.com/Project/profile.php)</p></td></tr><tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/47](https://github.com/SandeepS3/IT202-011/pull/47)</p></td></tr><tr><td><table><tr><td>F3 - Show on their profile page and ordered by most recent<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/78613787/144682633-06197875-842d-47b9-bc09-779dc6125286.png"><p>Users can view last 10 scores from their profile</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/78613787/144682671-6acb0dd4-84fe-4973-8578-a2f07a3e797b.png"><p>Last 10 scores being shown in most recent order</td></tr></td></tr></table></td></tr><table><tr><td>F4 - Create functions that output the following scoreboards (this will be used later) (2021-12-03)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/lib/functions.php](https://ss84-prod.herokuapp.com/lib/functions.php)</p></td></tr><tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/47](https://github.com/SandeepS3/IT202-011/pull/47)</p></td></tr><tr><td><table><tr><td>F4 - All the Functions<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/78613787/144682899-286058f0-6b70-450a-8b8c-7c8d59834bf4.png"><p>Top 10 Weekly, Monthly, and Lifetime functions being created with a limit of 10</td></tr></td></tr></table></td></tr></td></tr></table>
+
+
+<table>
+<tr><td>Milestone 3</td></tr><tr><td>
+<table>
+<tr><td>F1 - Users will have points associated with their account. (2021-12-10)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/Project/profile.php](https://ss84-prod.herokuapp.com/Project/profile.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/63](https://github.com/SandeepS3/IT202-011/pull/63)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F1 - Alter the User table to include points with a default of 0.</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145694909-d8f26c8e-5db3-45ad-b512-78797e49d8e7.png">
+<p>SQL file where user is altered</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F1 - Points should show on their profile page</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145694935-e9dfc30e-24bc-41db-b62d-5f059fb3e1b6.png">
+<p>Users can check their points on their profile page</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F2 - Create a PointsHistory table (id, user_id, point_change, reason, created) (2021-12-10)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/Project/sql/009_create_table_PointHistory.sql](https://ss84-prod.herokuapp.com/Project/sql/009_create_table_PointHistory.sql)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/63](https://github.com/SandeepS3/IT202-011/pull/63)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F2 - Any new entry should update the user’s points value (do not update the User points column directly)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695045-1937a71b-d220-4fc5-be2e-95a4d444d679.png">
+<p>Point history table created in sql file</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F3 - Competitions table should have the following columns (id, name, duration, expires (now + duration), current_reward, starting_reward, join_fee, current_participants, min_participants, paid_out (boolean), min_score, first_place_per, second_place_per, third_place_per, cost_to_create, created, modified) (2021-12-10)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/Project/sql/010_create_table_competitions.sql](https://ss84-prod.herokuapp.com/Project/sql/010_create_table_competitions.sql)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/64](https://github.com/SandeepS3/IT202-011/pull/64)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F3 - Table</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695205-8af270b8-2fdd-43fe-94e9-ed02baaa11d6.png">
+<p>sql file of the competitions table</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F4 - User will be able to create a competition (2021-12-10)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/Project/create_competition.php](https://ss84-prod.herokuapp.com/Project/create_competition.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/64](https://github.com/SandeepS3/IT202-011/pull/64)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F4 - Competitions will start at 1 point (reward)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695232-40f29235-6cce-4ad4-8a8d-cde5f832610d.png">
+<p>starting reward will me one or higher</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F4 - User sets a name for the competition</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695264-50477d9c-5d34-423d-b991-88ae72c21c89.png">
+<p>in the create competitions page the user is asked for a title</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F4 - User determines % given for 1st, 2nd, and 3rd place winners</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695276-bba9273a-24ae-483f-b946-ef8a81b0f0ec.png">
+<p>User decides the rewards to each player</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F4 - User determines if it’s free to join or the cost to join (min 0 for free)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695319-a28184af-ee2d-4c93-8619-6d504ecc4d15.png">
+<p>User determines the join cost which can be 0</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F4 - User determines the duration of the competition (in days)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695351-35bf952c-b275-4d79-b173-eaae98908b21.png">
+<p>user determines the number of days for the competition with a min of 3 days</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F4 - User can determine the minimum score to qualify (min 0)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695371-83391937-f572-4464-9917-41c7a84b60d0.png">
+<p>user determines the min score to join with a min of 0</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F4 - User determines minimum participants for payout (min 3)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695385-0ae6a385-e8c0-4052-8a5b-14f775656672.png">
+<p>user determines the min amount of participants with a min of 3</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F4 - Show any user friendly error messages</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695405-fc2f8586-4600-460d-89e8-b9a63661c7b7.png">
+<p>when the user gives a wrong input there are given an error</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F4 - Show user friendly confirmation message that competition was created</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695431-e0403a56-732d-4d28-a912-632dea4afa97.png">
+<p>a success flash message is given when competition is created</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F4 - The cost to the creator of the competition will be (1 + starting reward value)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695462-d2083d2f-bd83-438d-9326-ef9c51189ba6.png">
+<p>the starting reward is 1 at default which is why the cost button shows 2</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F5 - Each new participant causes the Reward value to increase by at least 1 or 50% of the joining fee rounded up (2021-12-11)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/Project/list_competitions.php](https://ss84-prod.herokuapp.com/Project/list_competitions.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/65](https://github.com/SandeepS3/IT202-011/pull/65)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F5 - Reward Value</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695529-d6d18787-7e73-48ae-a252-3a02623e0c42.png">
+<p>the before</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695534-849edee4-a92f-4a85-90d7-978ee8430345.png">
+<p>the after, the reward when up after someone joined by 1</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F6 - Have a page where the User can see active competitions (not expired) (2021-12-11)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/Project/list_competitions.php](https://ss84-prod.herokuapp.com/Project/list_competitions.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/65](https://github.com/SandeepS3/IT202-011/pull/65)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F6 - Order the results by soonest to expire</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695575-ec5e3e54-4da2-4985-9cdd-b4ac9ab6ada4.png">
+<p>list of competitions in order of soonest and with a max of 10 showing</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F7 - Will need an association table CompetitionParticipants (id, comp_id, user_id, created) (2021-12-10)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/Project/sql/011_create_table_comp_partcipants.sql](https://ss84-prod.herokuapp.com/Project/sql/011_create_table_comp_partcipants.sql)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/64](https://github.com/SandeepS3/IT202-011/pull/64)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F7 - Comp_id and user_id should be a composite unique key (user can only join a competition once)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695618-b51e96bd-15f3-4ec4-a5ac-aa557dbad6c2.png">
+<p>sql file of competition participants</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F8 - User can join active competitions  (2021-12-11)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/Project/list_competitions.php](https://ss84-prod.herokuapp.com/Project/list_competitions.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/65](https://github.com/SandeepS3/IT202-011/pull/65)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F8 - Update the competitions reward based on the # of participants and the appropriate math from the competition requirements above</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695534-849edee4-a92f-4a85-90d7-978ee8430345.png">
+<p>when a user joins a competition the reward value is updated based on the amount of participants and is add in the SQL db for competition participants</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F8 - Show proper error message if user is already registered</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695800-92d1175b-7df3-4707-a370-f8729cc2f19f.png">
+<p>if the user is already in the competition they will have a button showing already joined that wont click</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F8 - Show proper confirmation if user registered successfully</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695830-23d42897-a4ba-43d6-988f-c420474e641c.png">
+<p>when joined a flash message will pop up saying success</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F9 - Create function that calculates competition winners (2021-12-11)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/lib/functions.php](https://ss84-prod.herokuapp.com/lib/functions.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/65](https://github.com/SandeepS3/IT202-011/pull/65)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F9 - the function</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/145695882-c3198e7d-50cf-4063-b3bf-34d75b291734.png">
+<p>the function will get all expired unpaid competitions, from those it will order the winners and then give them the reward depending on how much each player will get for their place. updates can be seen in pointshistory SQL db</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr></td></tr></table>
+
+- Milestone 4
+
 <table>
 <tr><td>Milestone 4</td></tr><tr><td>
 <table>
