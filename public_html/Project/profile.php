@@ -3,13 +3,30 @@ require_once(__DIR__ . "/../../partials/nav.php");
 is_logged_in(true);
 ?>
 <?php
+$db = getDB();
+$getScores = $db->prepare("SELECT * FROM ScoresHistory WHERE user_id = :userId");
+$getScores->execute([":userId" => get_user_id()]);
+$totalRows = $getScores->rowCount();
+$resultsPerPage = 10;
+$numOfPages = ceil($totalRows / $resultsPerPage);
+
+
+if (!isset($_GET["page"])) {
+    die(header("Location: profile.php?page=1"));
+} else if ($_GET["page"] < 1) {
+    die(header("Location: profile.php?page=1"));
+} else if ($_GET["page"] > $numOfPages) {
+    die(header("Location: profile.php?page=" . $numOfPages));
+} else {
+    $page = $_GET["page"];
+}
+$row = ($page - 1) * $resultsPerPage;
 if (isset($_POST["save"])) {
     $email = se($_POST, "email", null, false);
     $username = se($_POST, "username", null, false);
+    $visibility = se($_POST, "visibility", null, false) == "" ? "public" : "private";
     $hasError = false;
-    //sanitize
     $email = sanitize_email($email);
-    //validate
     if (!is_valid_email($email)) {
         flash("Invalid email address", "danger");
         $hasError = true;
@@ -19,11 +36,13 @@ if (isset($_POST["save"])) {
         $hasError = true;
     }
     if (!$hasError) {
-        $params = [":email" => $email, ":username" => $username, ":id" => get_user_id()];
+        $params = [":email" => $email, ":username" => $username, ":visibility" => $visibility, ":id" => get_user_id()];
         $db = getDB();
-        $stmt = $db->prepare("UPDATE Users set email = :email, username = :username where id = :id");
+        $stmt = $db->prepare("UPDATE Users set email = :email, username = :username, visibility = :visibility where id = :id");
         try {
             $stmt->execute($params);
+            $_SESSION["user"]["visibility"] = $visibility;
+            flash("Details Updated!", "success");
         } catch (Exception $e) {
             users_check_duplicate($e->errorInfo);
         }
@@ -82,10 +101,35 @@ if (isset($_POST["save"])) {
 ?>
 
 <?php
+$visibility = get_visibility();
 $email = get_user_email();
 $username = get_username();
 ?>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<style>
+    .pagination {
+        display: inline-block;
+    }
+
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd;
+    }
+
+    .pagination a.active {
+        background-color: #4CAF50;
+        color: white;
+        border: 1px solid #4CAF50;
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: #ddd;
+    }
+</style>
 <div class="container-fluid">
     <h1>Profile</h1>
     <form method="POST" onsubmit="return validate(this);">
@@ -111,13 +155,23 @@ $username = get_username();
             <label class="form-label" for="conp">Confirm Password</label>
             <input class="form-control" type="password" name="confirmPassword" id="conp" />
         </div>
+
+        <div class="mb-3" style="flex-direction: column;">
+            <label style="flex:1" class="form-label" id="switchLabel" for="switchVisibility">Profile Visibility : Private</label>
+            <label style="flex:1" class="switch">
+                <input type="checkbox" onclick="buttonfuc()" id="switchVisibility" name="visibility">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
         <input type="submit" class="mt-3 btn btn-primary" value="Update Profile" name="save" />
+
     </form>
 </div>
 <p>Points: </p>
 <p class="theScoreOrPoints" id="points"></p>
 <div class="container-fluid">
-    <button id="showScoresBtn" onclick='getScores()' class="mt-3 btn btn-primary">Show last 10 Scores</button>
+    <!-- <button id="showScoresBtn" onclick='getScores()' class="mt-3 btn btn-primary">Show last 10 Scores</button> -->
     <ol id="last10Scores">
     </ol>
 </div>
@@ -127,33 +181,21 @@ $username = get_username();
         let con = form.confirmPassword.value;
         let isValid = true;
         //TODO add other client side validation....
-
-        //example of using flash via javascript
-        //find the flash container, create a new element, appendChild
         if (pw !== con) {
-            //find the container
-            /*let flash = document.getElementById("flash");
-            //create a div (or whatever wrapper we want)
-            let outerDiv = document.createElement("div");
-            outerDiv.className = "row justify-content-center";
-            let innerDiv = document.createElement("div");
-            //apply the CSS (these are bootstrap classes which we'll learn later)
-            innerDiv.className = "alert alert-warning";
-            //set the content
-            innerDiv.innerText = "Password and Confirm password must match";
-            outerDiv.appendChild(innerDiv);
-            //add the element to the DOM (if we don't it merely exists in memory)
-            flash.appendChild(outerDiv);*/
             flash("Password and Confirm password must match", "warning");
             isValid = false;
         }
         return isValid;
     }
 
-    function getScores() {
-        $("#showScoresBtn").hide()
+    function getScores(start = 0, numOfres = 5) {
         $.ajax({
             url: "api/get_10scores.php",
+            type: "post",
+            data: {
+                "start": start,
+                "resultnum": numOfres,
+            },
             success: (resp, status, xhr) => {
                 theScores = JSON.parse(resp);
                 showScores(theScores)
@@ -189,9 +231,41 @@ $username = get_username();
         })
     }
 
+
     $("#points").load("api/get_points.php");
+
+    function buttonfuc() {
+        const thebutton = document.getElementById("switchVisibility")
+        const label = document.getElementById("switchLabel")
+        if (thebutton.checked) {
+            label.innerText = "Profile Visibility : Private"
+            thebutton.value = "private";
+        } else {
+            label.innerText = "Profile Visibility : Public"
+            thebutton.value = "public";
+        }
+    }
+
+    function firstbuttonrun() {
+        const thebutton = document.getElementById("switchVisibility")
+        checkVal = "<?php echo se($visibility, null, "", false) == "public" ? "false" : "true"; ?>" == "false" ? false : true
+        thebutton.checked = checkVal
+        buttonfuc()
+    }
+
+    getScores(<?php echo $row ?>, <?php echo $resultsPerPage ?>)
+    firstbuttonrun()
 </script>
 
 <?php
+// echo var_export($row);
+// echo var_export($resultsPerPage);
+if ($page - 1 == 0) $page = 2;
+if ($page + 1 == $numOfPages + 1) $page = $numOfPages - 1;
+$j = '<div class="pagination">
+        <a href="profile.php?page=' . ($page - 1) . '">❮</a>
+        <a href="profile.php?page=' . ($page + 1) . '">❯</a>
+    </div>';
+echo $j;
 require_once(__DIR__ . "/../../partials/flash.php");
 ?>
