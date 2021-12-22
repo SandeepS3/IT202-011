@@ -248,31 +248,33 @@ function get_top10_weekly()
 {
     $db = getDB();
     $timestamp = date('Y-m-d H:i:s', time() - (7 * 86400));
-    $getScores = $db->prepare("SELECT * FROM Scores WHERE modified >=:theTime ORDER BY score DESC LIMIT 10");
+    $getScores = $db->prepare("SELECT username,score FROM Scores INNER JOIN Users on Scores.user_id= Users.id WHERE Scores.modified >=:theTime ORDER BY score DESC LIMIT 10");
     $getScores->execute([":theTime" => $timestamp]);
     $theFetch = $getScores->fetchAll();
-    $json = json_encode($theFetch);
-    return $json;
-    // return $theFetch;
+    // $json = json_encode($theFetch);
+    // return $json;
+    return $theFetch;
 }
 function get_top10_monthly()
 {
     $db = getDB();
     $timestamp = date('Y-m-d H:i:s', time() - (30.5 * 86400));
-    $getScores = $db->prepare("SELECT * FROM Scores WHERE modified >=:theTime ORDER BY score DESC LIMIT 10");
+    $getScores = $db->prepare("SELECT username,score FROM Scores INNER JOIN Users on Scores.user_id= Users.id WHERE Scores.modified >=:theTime ORDER BY score DESC LIMIT 10");
     $getScores->execute([":theTime" => $timestamp]);
     $theFetch = $getScores->fetchAll();
-    $json = json_encode($theFetch);
-    return $json;
+    // $json = json_encode($theFetch);
+    // return $json;
+    return $theFetch;
 }
 function get_top10_lifetime()
 {
     $db = getDB();
-    $getScores = $db->prepare("SELECT * FROM Scores ORDER BY score DESC LIMIT 10");
+    $getScores = $db->prepare("SELECT username,score FROM Scores INNER JOIN Users on Scores.user_id= Users.id ORDER BY Scores.score DESC LIMIT 10");
     $getScores->execute();
     $theFetch = $getScores->fetchAll();
-    $json = json_encode($theFetch);
-    return $json;
+    // $json = json_encode($theFetch);
+    // return $json;
+    return $theFetch;
 }
 
 function getCompWinners()
@@ -329,11 +331,37 @@ function getCompWinners()
         $updatePayout = $db->prepare("UPDATE Competitions SET paid_out=1 WHERE id=:cid");
         $updatePayout->execute(["cid" => $aComp["id"]]);
     }
+}
+
 function get_visibility()
 {
     if (is_logged_in()) { //we need to check for login first because "user" key may not exist
         return se($_SESSION["user"], "visibility", "", false);
     }
     return "";
+}
 
+function get_user_comp_history($start = 0, $end = 5)
+{
+    $db = getDB();
+    $uid = get_user_id();
+    $getHist = $db->prepare("SELECT comp_id FROM CompetitionParticipants  WHERE user_id= :uid");
+    $getHist->execute([":uid" => $uid]);
+    $allCompsIdObj = $getHist->fetchAll();
+
+    $theQuery = "SELECT * FROM Competitions WHERE id in (";
+    foreach ($allCompsIdObj as $theId) {
+        $compId = $theId["comp_id"];
+        $theQuery .= $compId . ",";
+    }
+    $theQuery = substr_replace($theQuery, ")", -1); // replace last char in str with ")"    
+    $theQuery .= " LIMIT " . $start . "," . $end;
+    $getComps = $db->prepare($theQuery);
+    try {
+        $getComps->execute();
+    } catch (PDOException $e) {
+        return $e;
+    }
+    $compLst = $getComps->fetchAll();
+    return [count($allCompsIdObj), $compLst]; //total rows, the rows
 }
