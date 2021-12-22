@@ -1,5 +1,5 @@
 # Project Name: Arcade Game
-## Project Summary: (Copy from proposal)
+## Final Project Demo Link: https://mediaspace.njit.edu/media/IT+Final+Demo/1_0qwxqwhi
 ## Github Link: https://github.com/SandeepS3/IT202-011/tree/prod/public_html/Project
 ## Project Board Link: https://github.com/SandeepS3/IT202-011/projects
 ## Website Link: https://ss84-prod.herokuapp.com/Project/login.php
@@ -564,24 +564,28 @@
 </td>
 </tr></td></tr></table>
 
-- Milestone 4
+
 
 <table>
 <tr><td>Milestone 4</td></tr><tr><td>
 <table>
-<tr><td>F1 - User can set their profile to be public or private (will need another column in Users table) ()</td></tr>
-<tr><td>Status: pending</td></tr>
-<tr><td>Links:</td></tr>
-<tr><td>PRs:</td></tr>
+<tr><td>F1 - User can set their profile to be public or private (will need another column in Users table) (2021-12-20)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/Project/profile.php?page=1](https://ss84-prod.herokuapp.com/Project/profile.php?page=1)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/70](https://github.com/SandeepS3/IT202-011/pull/70)</p></td></tr>
 <tr><td>
 <table>
 <tr><td>F1 - If public, hide email address from other users</td></tr>
 <tr><td>Status: 
-<img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
 
 <tr><td>
-<img width="768px" src="">
-<p></p>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/147017025-7caa1266-6710-4c61-b74f-79b795b42c90.png">
+<p>Users can go to their profile to make their profile either public or private to hide their profile from other users</p>
 </td></tr>
 
 </td>
@@ -590,51 +594,23 @@
 </td>
 </tr>
 <table>
-<tr><td>F2 - User will be able to see their competition history ()</td></tr>
-<tr><td>Status: pending</td></tr>
-<tr><td>Links:</td></tr>
-<tr><td>PRs:</td></tr>
+<tr><td>F2 - User will be able to see their competition history (2021-12-20)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/Project/comp_history.php](https://ss84-prod.herokuapp.com/Project/comp_history.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/72](https://github.com/SandeepS3/IT202-011/pull/72)</p></td></tr>
 <tr><td>
 <table>
-<tr><td>F2 - Limit to 10 results</td></tr>
+<tr><td>F2 - Limit to 10 results with Pagination</td></tr>
 <tr><td>Status: 
-<img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
 
 <tr><td>
-<img width="768px" src="">
-<p></p>
-</td></tr>
-
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr><td>
-<table>
-<tr><td>F2 - Paginate anything after 10</td></tr>
-<tr><td>Status: 
-<img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
-
-<tr><td>
-<img width="768px" src="">
-<p></p>
-</td></tr>
-
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr><td>
-<table>
-<tr><td>F2 - If no results, show the appropriate message</td></tr>
-<tr><td>Status: 
-<img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
-
-<tr><td>
-<img width="768px" src="">
-<p></p>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/147017421-dfbf0c0e-fe73-4d77-9f5f-91561c717d20.png">
+<p>only last 10 comps will show then you can paginate to the next page. </p>
 </td></tr>
 
 </td>
@@ -643,7 +619,7 @@
 </td>
 </tr>
 <table>
-<tr><td>F3 - User with the role of “admin” can edit a competition where paid_out = false ()</td></tr>
+<tr><td>F3 - User with the role of “admin” can edit a competition where paid_out = false (2021-12-21)</td></tr>
 <tr><td>Status: pending</td></tr>
 <tr><td>Links:</td></tr>
 <tr><td>PRs:</td></tr>
@@ -680,51 +656,23 @@
 </td>
 </tr>
 <table>
-<tr><td>F4 - Add pagination to the Active Competitions view ()</td></tr>
-<tr><td>Status: pending</td></tr>
-<tr><td>Links:</td></tr>
-<tr><td>PRs:</td></tr>
+<tr><td>F4 - Add pagination to the Active Competitions view (2021-12-20)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/Project/list_competitions.php](https://ss84-prod.herokuapp.com/Project/list_competitions.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/73](https://github.com/SandeepS3/IT202-011/pull/73)</p></td></tr>
 <tr><td>
 <table>
-<tr><td>F4 - Show 10 competitions per page</td></tr>
+<tr><td>F4 - Show 10 competitions per page with pagination</td></tr>
 <tr><td>Status: 
-<img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
 
 <tr><td>
-<img width="768px" src="">
-<p></p>
-</td></tr>
-
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr><td>
-<table>
-<tr><td>F4 - Paginate anything after 10</td></tr>
-<tr><td>Status: 
-<img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
-
-<tr><td>
-<img width="768px" src="">
-<p></p>
-</td></tr>
-
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr><td>
-<table>
-<tr><td>F4 - If no results, show the appropriate message</td></tr>
-<tr><td>Status: 
-<img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
-
-<tr><td>
-<img width="768px" src="">
-<p></p>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/147017980-c62d4e38-2043-40ab-b16b-f7e1e1328936.png">
+<p>user can see active comps with a limit of 10 per page then can paginate to the next page</p>
 </td></tr>
 
 </td>
@@ -733,19 +681,23 @@
 </td>
 </tr>
 <table>
-<tr><td>F5 - Anywhere a username is displayed should be a link to that user’s profile ()</td></tr>
-<tr><td>Status: pending</td></tr>
-<tr><td>Links:</td></tr>
-<tr><td>PRs:</td></tr>
+<tr><td>F5 - Anywhere a username is displayed should be a link to that user’s profile (2021-12-20)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/Project/home.php](https://ss84-prod.herokuapp.com/Project/home.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/76](https://github.com/SandeepS3/IT202-011/pull/76)</p></td></tr>
 <tr><td>
 <table>
 <tr><td>F5 - This includes all scoreboards</td></tr>
 <tr><td>Status: 
-<img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
 
 <tr><td>
-<img width="768px" src="">
-<p></p>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/147018262-6c01c7d9-c5da-43fb-8dcd-6ee2758ca20a.png">
+<p>users can view each others profile</p>
 </td></tr>
 
 </td>
@@ -757,11 +709,11 @@
 <table>
 <tr><td>F5 - If the profile is private you can have the page just display “this profile is private” upon access</td></tr>
 <tr><td>Status: 
-<img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
 
 <tr><td>
-<img width="768px" src="">
-<p></p>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/147018323-323c201e-4beb-4e8c-a021-316a6ea4f594.png">
+<p>if user is private there will be a message for them</p>
 </td></tr>
 
 </td>
@@ -770,19 +722,23 @@
 </td>
 </tr>
 <table>
-<tr><td>F6 - Viewing an active or expired competition should show the top 10 scoreboard related to that competition ()</td></tr>
-<tr><td>Status: pending</td></tr>
-<tr><td>Links:</td></tr>
-<tr><td>PRs:</td></tr>
+<tr><td>F6 - Viewing an active or expired competition should show the top 10 scoreboard related to that competition (2021-12-20)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/Project/comp_leaderboard.php?comp=Test](https://ss84-prod.herokuapp.com/Project/comp_leaderboard.php?comp=Test)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/76](https://github.com/SandeepS3/IT202-011/pull/76)</p></td></tr>
 <tr><td>
 <table>
-<tr><td>F6 - item 1</td></tr>
+<tr><td>F6 - Viewing</td></tr>
 <tr><td>Status: 
-<img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
 
 <tr><td>
-<img width="768px" src="">
-<p></p>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/147018497-dae428dc-2778-4f01-b95b-d425613ea371.png">
+<p>users can view competitions to see the score board in it</p>
 </td></tr>
 
 </td>
@@ -791,10 +747,14 @@
 </td>
 </tr>
 <table>
-<tr><td>F7 - Game should be fully implemented/complete by this point ()</td></tr>
+<tr><td>F7 - Game should be fully implemented/complete by this point (2021-12-21)</td></tr>
 <tr><td>Status: pending</td></tr>
-<tr><td>Links:</td></tr>
-<tr><td>PRs:</td></tr>
+<tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/Project/play.php](https://ss84-prod.herokuapp.com/Project/play.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/78](https://github.com/SandeepS3/IT202-011/pull/78)</p></td></tr>
 <tr><td>
 <table>
 <tr><td>F7 - Game should tell the player if they’re not logged in that their score will not be recorded.</td></tr>
@@ -802,8 +762,8 @@
 <img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
 
 <tr><td>
-<img width="768px" src="">
-<p></p>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/147018601-8c408e8a-7d55-476f-af9a-45e782f3c335.png">
+<p>the game cannot be played if the user is not logged in, but the game is done</p>
 </td></tr>
 
 </td>
@@ -812,51 +772,23 @@
 </td>
 </tr>
 <table>
-<tr><td>F8 - User’s score history will include pagination ()</td></tr>
-<tr><td>Status: pending</td></tr>
-<tr><td>Links:</td></tr>
-<tr><td>PRs:</td></tr>
+<tr><td>F8 - User’s score history will include pagination (2021-12-21)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://ss84-prod.herokuapp.com/Project/profile.php?page=1](https://ss84-prod.herokuapp.com/Project/profile.php?page=1)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/SandeepS3/IT202-011/pull/77](https://github.com/SandeepS3/IT202-011/pull/77)</p></td></tr>
 <tr><td>
 <table>
-<tr><td>F8 - Show latest 10</td></tr>
+<tr><td>F8 - Show latest 10 with pagination</td></tr>
 <tr><td>Status: 
-<img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
 
 <tr><td>
-<img width="768px" src="">
-<p></p>
-</td></tr>
-
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr><td>
-<table>
-<tr><td>F8 - Paginate after 10</td></tr>
-<tr><td>Status: 
-<img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
-
-<tr><td>
-<img width="768px" src="">
-<p></p>
-</td></tr>
-
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr><td>
-<table>
-<tr><td>F8 - Show appropriate message for no results</td></tr>
-<tr><td>Status: 
-<img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
-
-<tr><td>
-<img width="768px" src="">
-<p></p>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/147017718-175cde9f-cff7-4e0c-adce-52810523b7be.png">
+<p>on the profile page, users can see score  history with a limit of 10 and then have to paginate to the next page</p>
 </td></tr>
 
 </td>
@@ -865,35 +797,23 @@
 </td>
 </tr>
 <table>
-<tr><td>F9 - Home page will have a weekly, monthly, and lifetime scoreboard ()</td></tr>
-<tr><td>Status: pending</td></tr>
-<tr><td>Links:</td></tr>
-<tr><td>PRs:</td></tr>
-<tr><td>
-<table>
-<tr><td>F9 - Will also have a link to the game</td></tr>
-<tr><td>Status: 
-<img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
+<tr><td>F9 - Home page will have a weekly, monthly, and lifetime scoreboard (2021-12-20)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
 
-<tr><td>
-<img width="768px" src="">
-<p></p>
-</td></tr>
+ [https://ss84-prod.herokuapp.com/Project/home.php](https://ss84-prod.herokuapp.com/Project/home.php)</p></td></tr>
+<tr><td>PRs:<p>
 
-</td>
-</tr>
-</table>
-</td>
-</tr>
+ [https://github.com/SandeepS3/IT202-011/pull/75](https://github.com/SandeepS3/IT202-011/pull/75)</p></td></tr>
 <tr><td>
 <table>
 <tr><td>F9 - Scoreboards will show username and points for the session</td></tr>
 <tr><td>Status: 
-<img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
 
 <tr><td>
-<img width="768px" src="">
-<p></p>
+<img width="768px" src="https://user-images.githubusercontent.com/78613787/147018729-af29800b-5b31-47a8-8f40-ee74eab628fe.png">
+<p>user can see the scoreboards and click on users to view profiles and such. at the bottom their is a button to take you to the game</p>
 </td></tr>
 
 </td>
@@ -901,6 +821,7 @@
 </table>
 </td>
 </tr></td></tr></table>
+
 
 ### Intructions
 #### Don't delete this
